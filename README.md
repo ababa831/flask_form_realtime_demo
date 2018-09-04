@@ -1,6 +1,6 @@
 # flask_form_realtime_demo
 
-A realtime communication example of the Flask web application.
+A realtime communication example of the Flask web application
 
 ## Usage
 1. Git clone the repository
