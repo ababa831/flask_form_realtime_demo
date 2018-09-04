@@ -1,0 +1,30 @@
+<!-- Below codes include {} blocks are written in the Jinja2 syntax-->
+{% extends "layout.html" %}
+{% block body %}
+
+<!-- Posting text form to request.form["single"] in main.py -->
+<form class="" action="/" method="post">
+    <input type="text" name="single" value="Hello World!" placeholder="Please input a text.">
+    <input type="submit" name="" value="Submit">
+</form>
+<br>
+<!-- Posting checkbox form to request.form.getlist("list") in main.py-->
+<form class="" action="/" method="post">
+    <input type="checkbox" name="list" value="A" placeholder=""> A
+    <input type="checkbox" name="list" value="B" placeholder=""> B
+    <input type="submit" name="" value="Submit checklist">
+</form>
+
+<br>
+<h4>Result</h4>
+<!-- Jinja2 syntax documentation. If value_list exist, the values are displayed as bullet points -->
+{% for v in value_list %}
+<li>{{ v }}</li>
+{% endfor %}
+
+<!-- if value_single exists, the value is displayed as text -->
+{% if value_single %}
+<li> {{ value_single }}</li>
+{% endif %}
+
+{% endblock %}

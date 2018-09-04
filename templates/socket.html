@@ -1,0 +1,42 @@
+<!-- Below documentation are written in Jinja2 syntax-->
+{% extends "layout.html" %}
+{% block script %}
+
+<!-- Adding JQuery, SocketIO CDN -->
+<!--　<script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.slim.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        namespace = "/demo";
+        // Below variable express an adress as e.g. http://127.0.0.0:8888
+        var socket = io.connect(location.protocol + '//' +  document.domain + ':' + location.port + namespace);
+
+        // Recieving count values from main.py to my_count
+        socket.on('my_count', function(msg) {
+            $('.count').empty();  // Deleting content in <div class="count></div>
+            $('.count').append().html(msg.data);  // Append recieved data as html
+        });
+
+        // Recieving text data from main.py to my_count
+        socket.on('my_content', function(msg) {
+            $('#place').append(msg.data);  // Append received data (I don't know Why you don't need to use html() function?) 
+        });
+
+        // If form is submitted, send value of id="input_data" (see bottom Jinja2 codes) in text area to receive_content in main.py
+        $('form#send_content').submit(function(event) {
+            socket.emit('receive_content', {data: $('#input_data').val()});
+            return false;
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="count"></div>
+<form id="send_content" method="POST" action="#">
+    <input type="text" name="input_data" id="input_data" placeholder="Input content!">
+    <input type="submit" value="Submit">
+</form>
+<div id="place"></div>
+{% endblock %}
