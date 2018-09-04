@@ -11,5 +11,5 @@ A realtime communication example of Flask web application.
 
 ## References
 
-- [hitoribucho's realtime demo article](https://qiita.com/hitoribucho/items/9f5dd087b3d784af6b73)
+- [hitoribucho's realtime demo article](https://qiita.com/hitoribucho/items/9f5dd087b3d784af6b73)
 - [ynakayama's introduction of layout.html for the Flask framework](https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4)
