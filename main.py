@@ -4,7 +4,7 @@ from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret_key"  # Add an arbitrary string
-# If you input None, MonkeyPatchWarning might be occured.
+# If you set async_mode=None, MonkeyPatchWarning might be occured.
 socketio = SocketIO(app, async_mode="eventlet")
 
 
