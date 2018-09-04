@@ -15,12 +15,12 @@ class SiteInfo:
 # Rendering a simple html page and getting or posting values
 @app.route("/", methods=["GET", "POST"])  # Do not forget method"s"
 def get_form():
-    # Value from a recieved single type="text" (form) data
+    # Recieved single type="text" (form) data
     try:
         value_single = request.form["single"]
     except KeyError:
         value_single = None
-    # Value list from recieved type="checkbox" name="list" data
+    # Recieved type="checkbox" name="list" data
     try:
         value_list = request.form.getlist("list")
     except KeyError:
@@ -34,7 +34,7 @@ def get_form():
 
 
 # Realtime communication with websocket
-# Always send information from server in background
+# Always sending information from server in background
 def background(comment):
     num = 0
     while True:
